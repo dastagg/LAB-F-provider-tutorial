@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PassedData extends ChangeNotifier {
-  final String _data = 'Passed Data';
+  String _data = 'Passed Data';
 
   String get data => _data;
 
-  void updateString(data) {
+  void updateString(String data) {
+    _data = data;
     notifyListeners();
   }
 }
