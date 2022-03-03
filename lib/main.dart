@@ -1,56 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(const MyApp());
+
+class PassedData with ChangeNotifier {
+  final String _data = 'New Passed Data From Top Level Widget';
+
+  String get data => _data;
+
+  void updateString() {
+    notifyListeners();
+  }
+
+}
+
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  final String data = 'Passed Data From Top Level Widget';
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Provider<PassedData>(
+      create: (context) =>  PassedData(),
+      dispose: (context, value) => value.dispose(),
+      child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Level1(),
       ),
-      home: Level1(data: data),
     );
   }
 }
 
 class Level1 extends StatelessWidget {
-  final String data;
-  const Level1({required this.data, Key? key}) : super(key: key);
+  const Level1({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(data),
+        title: Text(context.watch<PassedData>().data,),
       ),
-      body: Level2(data: data),
+      body: Level2(),
     );
   }
 }
 
 class Level2 extends StatelessWidget {
-  final String data;
-  const Level2({required this.data, Key? key}) : super(key: key);
+  const Level2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Level3(data: data),
+      child: Level3(),
     );
   }
 }
 
 class Level3 extends StatelessWidget {
-  final String data;
-  const Level3({required this.data, Key? key}) : super(key: key);
+  const Level3({Key? key}) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
-    return Text(data);
+    return Text(context.watch<PassedData>().data,);
   }
 }
 
