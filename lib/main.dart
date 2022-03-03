@@ -64,7 +64,8 @@ class Level3 extends StatelessWidget {
 class MyText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text(context.watch<PassedData>().data,);
+    // Changing this from watch to read loads the data the first time but not on updates.
+    return Text(context.read<PassedData>().data,);
   }
 }
 
