@@ -13,10 +13,12 @@ class PassedData extends ChangeNotifier {
 }
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -24,9 +26,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            title: MyText(),
+            title: const MyText(),
           ),
-          body: Level1(),
+          body: const Level1(),
         ),
       ),
     );
@@ -34,19 +36,23 @@ class MyApp extends StatelessWidget {
 }
 
 class Level1 extends StatelessWidget {
+  const Level1({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SafeArea(
       child: Level2(),
     );
   }
 }
 
 class Level2 extends StatelessWidget {
+  const Level2({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: const [
         MyTextField(),
         Level3(),
       ],
@@ -55,6 +61,8 @@ class Level2 extends StatelessWidget {
 }
 
 class Level3 extends StatelessWidget {
+  const Level3({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Text(context.watch<PassedData>().data,);
@@ -62,6 +70,8 @@ class Level3 extends StatelessWidget {
 }
 
 class MyText extends StatelessWidget {
+  const MyText({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     // Changing this from watch to read loads the data the first time but not on updates.
@@ -70,6 +80,8 @@ class MyText extends StatelessWidget {
 }
 
 class MyTextField extends StatelessWidget {
+  const MyTextField({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return TextField(

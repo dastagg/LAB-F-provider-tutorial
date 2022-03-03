@@ -1,16 +1,18 @@
 # state_tut
 
-A new Flutter project.
+A Flutter project.
 
-## Getting Started
+## A London App Brewery Flutter Bootcamp tutorial application.
 
-This project is a starting point for a Flutter application.
+This is code typed in or copy/pasted in the process of learning to create applications using Flutter.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This is a special tutorial that walked me through:
+    Basic App.
+    Property Drilling: the act of passing data down the Widget Tree through Widgets that don't even want the data but must accept it so they can pass it along.
+    Add the Provider package and remove Prop Drilling.
+    Get Provider to pass the data to only the Widgets that need it.
+    Add a TextField to change the data and notify Widgets that are subscribed to update the data.
+    Add "update once" (read vs watch) to one Widget.
+    
+    
