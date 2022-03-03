@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  final String data = 'Passed Data From Top Level Widget';
   const MyApp({Key? key}) : super(key: key);
 
   @override
@@ -11,41 +12,45 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Level1(),
+      home: Level1(data: data),
     );
   }
 }
 
 class Level1 extends StatelessWidget {
-  const Level1({Key? key}) : super(key: key);
+  final String data;
+  const Level1({required this.data, Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Important Data'),
+        title: Text(data),
       ),
-      body: Level2(),
+      body: Level2(data: data),
     );
   }
 }
 
 class Level2 extends StatelessWidget {
-  const Level2({Key? key}) : super(key: key);
+  final String data;
+  const Level2({required this.data, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Level3(),
+      child: Level3(data: data),
     );
   }
 }
 
 class Level3 extends StatelessWidget {
-  const Level3({Key? key}) : super(key: key);
+  final String data;
+  const Level3({required this.data, Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
-    return Text('Needs Data');
+    return Text(data);
   }
 }
 
